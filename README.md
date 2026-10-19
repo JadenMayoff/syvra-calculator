@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Markdown
 
-## Getting Started
+# Modern Responsive Calculator App
 
-First, run the development server:
+A mobile-responsive calculator application built with **React**, **Next.js** (App Router), **TypeScript**, and **Tailwind CSS**, accompanied by comprehensive unit tests using **Vitest**.
+
+**Live Demo:** [https://syvra-calculator.vercel.app](https://syvra-calculator.vercel.app)
+
+---
+
+## Features
+
+- **Smartphone-Inspired UI:** Mobile-first, responsive interface built with Tailwind CSS that adapts seamlessly across phone, tablet, and desktop viewports.
+- **Dual Calculation Modes:**
+  - **Standard Mode:** Core arithmetic operations (`+`, `-`, `×`, `÷`), sign toggling (`±`), percentages (`%`), backspace (`⌫`), and clear (`AC`/`C`).
+  - **Scientific Mode:** Quick-toggle panel unlocking square root (`√`), exponents (`x²`), trigonometric functions (`sin`, `cos`), and `π`.
+- **Calculation History:** Collapsible log drawer tracking past evaluations and expressions.
+- **Keyboard Accessibility:** Direct desktop keyboard integration (`0-9`, `.`, `+`, `-`, `*`, `/`, `Enter`, `Backspace`, `Escape`, `%`).
+- **Robust Edge-Case Logic:**
+  - Protection against division by zero (`Error` output state).
+  - Floating-point precision formatting (prevents standard JavaScript decimal rounding glitches like `0.1 + 0.2 = 0.30000000000000004`).
+  - Strict validation preventing duplicate decimal point entries.
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 15+ (App Router, React 19)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Testing:** Vitest & React Testing Library (`jsdom`)
+- **Deployment:** Vercel
+
+---
+
+## Running Unit Tests
+
+All state management and arithmetic calculation logic are isolated inside a dedicated custom hook (`useCalculator.ts`), enabling reliable unit testing without UI rendering overhead.
+
+To execute the test suite locally:
+
+```bash
+npm test
+```
+
+The suite includes 13 unit test cases covering digit concatenation, operator chaining, decimal handling, backspace, clear functions, floating-point precision rounding, and history logging.
+
+## Local Setup Instructions
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/JadenMayoff/syvra-calculator.git
+
+cd syvra-calculator
+```
+
+2. Install dependencies:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sources & Attributions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In accordance with the technical evaluation instructions:
 
-## Learn More
+- AI Collaboration: Developed with assistance from Gemini AI for architectural design, custom hook state isolation, Vitest/Vite testing suite configuration, and floating-point edge-case validation.
 
-To learn more about Next.js, take a look at the following resources:
+- Design & UX: Modeled after native smartphone calculator layout standards and interaction patterns.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Core Dependencies: Next.js, React, Tailwind CSS, Vitest, and React Testing Library.
